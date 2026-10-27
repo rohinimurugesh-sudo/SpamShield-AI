@@ -1,0 +1,299 @@
+:root {
+  /* Exact Colors from Specification */
+  --color-primary-purple: #804A8A;
+  --color-deep-purple: #3A0353;
+  --color-light-peach: #F8D299;
+  --color-warm-orange: #F59E51;
+
+  /* Backgrounds & Text */
+  --bg-main: #160B2D;
+  --bg-secondary: #24103F;
+  --text-main: #FFF8FF;
+  --text-secondary: #C8BBD6;
+  --text-muted: #8E7EA0;
+
+  /* Subtle Glassmorphism */
+  --glass-surface: rgba(255, 255, 255, 0.05);
+  --glass-surface-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(16px);
+  --card-radius: 18px;
+  --card-radius-sm: 10px;
+
+  /* Soft Shadows */
+  --shadow-subtle: 0 10px 30px -8px rgba(16, 7, 34, 0.5);
+
+  /* Fonts */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-main);
+  background-image: radial-gradient(circle at 50% 0%, #24103F 0%, #160B2D 85%);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 74, 138, 0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 81, 0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Clean Glass Cards */
+.glass-panel {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Clean Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--color-primary-purple) 0%, var(--color-warm-orange) 100%);
+  color: #FFF8FF;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(245, 158, 81, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFF8FF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-family: var(--font-heading);
+}
+
+/* Status Badges - Red for Spam, Green for Not Spam, Amber for Uncertain (Req 4) */
+.badge-spam {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #FC8181;
+}
+
+.badge-legit {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #68D391;
+}
+
+.badge-review {
+  background: rgba(245, 158, 81, 0.18);
+  border: 1px solid rgba(245, 158, 81, 0.45);
+  color: #F8D299;
+}
+
+/* Threat X-Ray Highlight & Indicators */
+.xray-highlight {
+  background: rgba(245, 158, 81, 0.28);
+  color: #FDE68A;
+  border-bottom: 2px solid #F59E51;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(245, 158, 81, 0.22);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.xray-highlight:hover {
+  background: rgba(245, 158, 81, 0.45);
+  box-shadow: 0 0 14px rgba(245, 158, 81, 0.4);
+}
+
+.xray-sev-high {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #FC8181;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.xray-sev-med {
+  background: rgba(245, 158, 81, 0.18);
+  border: 1px solid rgba(245, 158, 81, 0.4);
+  color: #F8D299;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.xray-sev-low {
+  background: rgba(128, 74, 138, 0.22);
+  border: 1px solid rgba(128, 74, 138, 0.45);
+  color: #E2C9FB;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* Form Controls */
+.glass-input {
+  width: 100%;
+  background: rgba(22, 11, 45, 0.45);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius-sm);
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  border-color: rgba(248, 210, 153, 0.45);
+  background: rgba(22, 11, 45, 0.65);
+}
+
+.glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Subtle Ambient Background Orbs */
+.bg-decor-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.orb-purple {
+  width: 420px;
+  height: 420px;
+  background: #3A0353;
+  top: -100px;
+  left: 15%;
+}
+
+.orb-peach {
+  width: 320px;
+  height: 320px;
+  background: #804A8A;
+  bottom: 10%;
+  right: -50px;
+  opacity: 0.25;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.content-body {
+  padding: 28px 36px 60px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .content-body {
+    padding: 20px 16px 40px;
+  }
+}
